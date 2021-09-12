@@ -26,8 +26,10 @@ module.exports = (bot) => {
             var props = require(`./commands/${f}`);
             console.log(`Command "${props.name.green}" (${f.red}) loaded succesfully. [${props.aliases.join(", ").yellow}]`)
             bot.commands.set(props.name, props);
+            bot.helps.set(props.name, props.usage)
             props.aliases.forEach(alias => {
                 bot.aliases.set(alias, props.name);
+                bot.helps.set(alias, props.usage)
             });
         });
         console.log("Commands loaded succesfully!".green);

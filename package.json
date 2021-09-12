@@ -1,18 +1,18 @@
 {
-  "name": "ec-whatbot",
-  "version": "1.0.0",
+  "name": "ecwhatbot",
+  "version": "2.1",
   "description": "WhatsApp bot. Ezz",
   "main": "index.js",
   "scripts": {
-    "start": "node ."
+    "start": "node index.js"
   },
   "author": "emreyigitcbc",
-  "license": "AGPL-3.0",
+  "license": "Apache 2.0",
   "dependencies": {
-    "@open-wa/wa-automate": "^4.20.6",
+    "@open-wa/wa-automate": "^4.20.8",
     "@open-wa/wa-decrypt": "^4.3.1",
-    "cli-table3": "^0.6.0",
-    "discord.js": "^13.1.0",
-    "fs": "^0.0.1-security"
+    "colors": "^1.4.0",
+    "fs": "0.0.1-security",
+    "ytdl-core": "^4.9.1"
   }
 }

@@ -3,12 +3,12 @@ const { client } = require('../index');
 client.onAnyMessage(async message => {
 	try {
 		selectedprefix = null;
-		if (message.isMedia) msg = message.caption.toLowerCase(); else msg = message.body.toLowerCase();
-		if (msg.startsWith(prefix)) {
+		if (message.isMedia) msg = message.caption; else msg = message.body;
+		if (msg.toLowerCase().startsWith(prefix)) {
 			selectedprefix = prefix;
 		} else {
 			prefixes.some(element => {
-				if (msg.includes(element)) {
+				if (msg.toLowerCase().includes(element)) {
 					selectedprefix = element;
 					return true;
 				}
@@ -28,9 +28,13 @@ client.onAnyMessage(async message => {
 		}
 		if (cmd) {
 			try {
-				perms = ""
 				if (message.fromMe) message.from = message.to
-				cmd.run(client, message, perms, args);
+				if (client.cooldowns.has(message.sender.id+"-"+command)) return;
+				cmd.run(client, message, args);
+				client.cooldowns.set(message.sender.id+"-"+command, true);
+				setTimeout(()=> {
+					client.cooldowns.delete(message.sender.id+"-"+command)
+				}, cmd.cooldown || 0)
 			} catch { }
 		}
 	} catch { }

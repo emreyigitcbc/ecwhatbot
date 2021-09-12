@@ -4,8 +4,10 @@ module.exports = {
     name: "ban",
     description: "Remove user from group.",
     aliases: ["kick"],
+    cooldown: 5000,
+    usage: "Kullanıcıyı gruptan atmaya yarar. Komudu kullanabilmek için hem benim hem de kullanan kişinin yetkisi olması gerek. Bir kişiyi etiketleyerek kullanılır.",
 
-    async run(bot, message, perms, args) {
+    async run(bot, message, args) {
         {
             if (message.isGroupMsg) {
                 admins = await bot.getGroupAdmins(message.chatId)
