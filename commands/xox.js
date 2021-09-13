@@ -1,10 +1,10 @@
+const config = require("../config.json")
+const lang = require("../language.js")[""+config.language]
 const { prefix } = require("../config.json");
-
+// will be translated later
 module.exports = {
     name: "xox",
-    description: "XOX Mini game",
     aliases: ["sos", "xo"],
-    cooldown: 2000,
     usage: "xox [başlat/<satır ismi>] [başlat: <büyüklük>/grupta: <@kişi>/<sütun ismi>] [oyun başladıysa: <x/o>]",
 
     async run(bot, message, args) {

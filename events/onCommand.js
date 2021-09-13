@@ -1,5 +1,6 @@
-const { prefix, prefixes, permissions } = require("../config.json")
+const { prefix, prefixes } = require("../config.json")
 const { client } = require('../index');
+
 client.onAnyMessage(async message => {
 	try {
 		selectedprefix = null;
@@ -29,18 +30,12 @@ client.onAnyMessage(async message => {
 		if (cmd) {
 			try {
 				if (message.fromMe) message.from = message.to
-				if (client.cooldowns.has(message.sender.id+"-"+command)) return;
 				cmd.run(client, message, args);
-				client.cooldowns.set(message.sender.id+"-"+command, true);
-				setTimeout(()=> {
-					client.cooldowns.delete(message.sender.id+"-"+command)
-				}, cmd.cooldown || 0)
 			} catch { }
 		}
 	} catch { }
 })
 
 module.exports = {
-	name: "onCommand",
-	description: "Command trigger event"
+	name: "onCommand"
 }

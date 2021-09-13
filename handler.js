@@ -1,3 +1,5 @@
+const config = require("./config.json")
+const lang = require("./language.js")[""+config.language]
 const fs = require("fs");
 require('colors');
 
@@ -6,25 +8,25 @@ module.exports = (bot) => {
     fs.readdir("./events/", (err, files) => {
         if (err) console.error(err);
         let eventFiles = files.filter(f => f.split(".").pop() === "js");
-        if (eventFiles.length <= 0) return console.log("NO EVENT FOUND!".red);
-        console.log(`Loading ${eventFiles.length} events...`.yellow);
+        if (eventFiles.length <= 0) return console.log(lang.no_event.red);
+        console.log(lang.loading_event_count.yellow, eventFiles.length);
         eventFiles.forEach((f, i) => {
             prop = require(`./events/${f}`);
-            console.log(`Event "${prop.name.green}" (${f.red}) loaded succesfully.`)
+            console.log(lang.event_loaded, prop.name, f)
         });
-        console.log("Events loaded succesfully!".green);
+        console.log(lang.events_loaded.green);
     });
     // COMMANDS
     fs.readdir("./commands/", (err, files) => {
         if (err) console.error(err);
         let cmdFiles = files.filter(f => f.split(".").pop() === "js");
 
-        if (cmdFiles.length <= 0) return console.log("NO COMMAND FOUND!".red);
+        if (cmdFiles.length <= 0) return console.log(lang.no_command.red);
 
-        console.log(`Loading ${cmdFiles.length} commands...`.yellow);
+        console.log(lang.loading_command_count.yellow, cmdFiles.length);
         cmdFiles.forEach((f, i) => {
             var props = require(`./commands/${f}`);
-            console.log(`Command "${props.name.green}" (${f.red}) loaded succesfully. [${props.aliases.join(", ").yellow}]`)
+            console.log(lang.command_loaded, props.name, f, props.aliases.join(", "))
             bot.commands.set(props.name, props);
             bot.helps.set(props.name, props.usage)
             props.aliases.forEach(alias => {
@@ -32,6 +34,6 @@ module.exports = (bot) => {
                 bot.helps.set(alias, props.usage)
             });
         });
-        console.log("Commands loaded succesfully!".green);
+        console.log(lang.commands_loaded.green);
     });
 };
