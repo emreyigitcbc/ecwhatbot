@@ -33,6 +33,13 @@ module.exports = {
         weather_error: "Bir hata meydana geldi, lütfen daha sonra tekrar deneyiniz.",
         weather_text: `*%s için hava tahmini*\n*Sıcaklık:* %s°C\n*Hissedilen:* %s°C\n*Rüzgar:* %s\n*Nem:* %%`,
 
+        send_usage: "mesajat <kişi adı/numara> <mesaj....>",
+        send_wrong_password: "Yanlış şifre knk",
+        send_ok: "Gönderdim knk",
+        send_not_found: "Böle birini bulamadım knk ?",
+        send_verify_arg: "onayla",
+        send_verify_pending: "Tamam isteğin alındı, onaylaman gerekiyor tek.\n*Mesajın gideceği kişi:* %s\n*Mesaj:* %s",
+
         sticker_usage: `*Bir resmi/videoyu/gifi alıntılayarak veya göndermeden önce altına yazarak kullanılır.*\n*Alabileceği argümanlar:*\n*-koru*: Medyanın biçimini korur. (Sadece HAREKETSİZ ÇIKARTMALARDA kullanılır)\n*-dairesel*: (Medyayı dairesel bir şekilde biçimlendirir.)\n-*biçim*: Medyanın ne tarafını işlemesi gerektiğini belirtir. (_Alabileceği değerler:_\n"yukarı" | "sağyukarı" | "sağ" | "sağaşağı" | "aşağı" | "solaşağı" | "sol" | "solyukarı" | "kuzey" | "kuzeydoğu" | "doğu" | "güneydoğu" | "güney" | "güneybatı" | "batı" | "kuzeybatı" | "merkez" | "ortala" | "entropi" | "dikkat")\n*-fps <sayı>*: GIF veya videonun saniyedeki kare hızını belirler.\n*-başlangıç <dd:ss>*: Videonun başlangıç zamanını belirlemek için kullanılır.\n*-bitiş <dd:ss>*: Videonun bitiş zamanını belirlemek için kullanılır.\n*-kırpma*: Videonun ortalanıp kırpılmasını deaktif eder.\n*-boyut <sayı>*: Videonun bir kenarının pixel sayısını belirtir. (Video kare şeklinde çıkar)\n\n*Örnek kullanım:*\n${prefix}sticker -koru -dairesel\n${prefix}sticker -koru -biçim yukarı\n${prefix}sticker -fps 20 -kırpma -boyut 256`,
         sticker_args: ["-dairesel", "-koru", "-temizle", "-biçim", "-başlangıç", "-bitiş", "-boyut", "-fps", "-kırpma"],
         sticker_log_request: `[Sticker] - %s Tarafından sticker isteği geldi. (%s)`,
@@ -107,6 +114,14 @@ module.exports = {
         weather_usage: "weather <city>",
         weather_error: "An error occured, please try again later.",
         weather_text: `*Weather report for %s*\n*Temperature:* %s°C\n*Feels:* %s°C\n*Wind:* %s\n*Humidity:* %s%`,
+
+        send_usage: "mesajat <kişi adı/numara> <mesaj....>",
+        send_wrong_password: "Yanlış şifre knk",
+        send_ok: "Gönderdim knk",
+        send_not_found: "Böle birini bulamadım knk ?",
+        send_verify_arg: "verify",
+        send_verify_pending: "Tamam isteğin alındı, onaylaman gerekiyor tek.\n*Mesajın gideceği kişi:* %s\n*Mesaj:* %s",
+
 
         sticker_usage: `*Using by quoting a media or captioning a media.*\n*Available Arguments That It Can Take:*\n*-protect*: It protects the media's shape (Only for non-animated)\n*-round*: Formats media as round\n*-format*: Specifies where to process of a media. (_Available Args:_\n"up" | "rightup" | "right" | "rightbottom" | "bottom" | "leftbottom" | "left" | "leftup" | "north" | "northeast" | "east" | "southeast" | "south" | "southwest" | "west" | "northwest" | "center" | "centre" | "entropy" | "attention")\n*-fps <number>*: Specifies max frame rate (only for aniamted)\n*-start <mm:ss>*: Specifies video's start time.\n*-end <mm:ss>*: Specifies video's end time.\n*-dontcrop*: Doesn't crops media into a square.\n*-size <number>*: Specifies one edge of video (Video shape is square)\n\n*Examples:*\n${prefix}sticker -protect -round\n${prefix}sticker -protect -format up\n${prefix}sticker -fps 20 -dontcrop -size 256`,
         sticker_args: ["-round", "-protect", "-clean", "-format", "-start", "-end", "-size", "-fps", "-dontcrop"],
