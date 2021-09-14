@@ -16,7 +16,7 @@ module.exports = {
 		console.log(lang.ytmp3_log_request, message.sender.id)
 		async function gonder() {
 			await bot.sendFile(message.from, message.from.replace("@", "_")+'.mp3', "audio", "audio", null, false, true, false, false);
-			console.log(lang.ytmp3_log_request, message.sender.id, Date.now() - now)
+			console.log(lang.ytmp3_log_sent, message.sender.id, Date.now() - now)
 			return;
 		}
 		const download = ytdl(videoURL, { filter: 'audioonly' });

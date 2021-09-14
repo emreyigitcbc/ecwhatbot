@@ -30,7 +30,7 @@ client.onAnyMessage(async message => {
 		if (cmd) {
 			try {
 				if (message.fromMe) message.from = message.to
-				cmd.run(client, message, args);
+				cmd.run(client, message, args, msg);
 			} catch { }
 		}
 	} catch { }

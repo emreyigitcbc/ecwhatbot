@@ -15,6 +15,8 @@ whatsapp.create({
 	bot.aliases = new Map();
 	bot.helps = new Map();
 	bot.xox = new Map();
+	bot.send = new Map();
+	
 	bot.onStateChanged(async state => {
         if (state === "CONFLICT" || state === "UNLAUNCHED") bot.forceRefocus();
     });
