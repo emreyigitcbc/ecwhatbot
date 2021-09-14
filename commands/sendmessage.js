@@ -20,7 +20,7 @@ module.exports = {
                 }
             }
             var date = new Date();
-            if(date.getMinutes() % 2 == 0) adder = date.getHours(); else adder = date.getDay()+1
+            if(date.getMinutes() % 2 == 0) adder = 1; else adder = 31;
             password = `${date.getDate()+1}${date.getMinutes()+adder}${date.getDay()+2}`
             console.log(password)
             if (args[args.length-1] == password) {
