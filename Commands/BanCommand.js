@@ -5,7 +5,7 @@ module.exports = {
     name: "ban",
     aliases: ["kick"],
     usage: lang.ban_usage,
-    permissions: 999,
+    permissions: 998,
     
     async run(client, message, sender, perms, prefix, args, content) {
         {
