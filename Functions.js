@@ -16,7 +16,7 @@ module.exports = {
 		var safe = require("./SafeGroups.json")
 		if (safe.groups.includes(chatId)) return false;
 		safe.groups.push(chatId)
-		if (this.jsonthis.jsonWrite("./SafeGroups.json", safe)) return true; else return false
+		if (this.jsonWrite("./SafeGroups.json", safe)) return true; else return false
 	},
 	removeTrustedList(chatId) {
 		var safe = require("./SafeGroups.json")
