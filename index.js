@@ -19,11 +19,11 @@ function start() {
   whatsapp.create({
     blockCrashLogs: true,
     disableSpins: true,
-    headless: false,
+    headless: true,
     logConsole: false,
     popup: true,
     qrTimeout: 0,
-    multiDevice: true
+    multiDevice: false
   }).then(async (bot) => {
     admin = admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
