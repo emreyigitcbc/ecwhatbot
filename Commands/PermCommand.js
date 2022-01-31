@@ -1,22 +1,20 @@
-const config = require("../config.json")
-const lang = require(`../language.${config.language}.js`)
-
 module.exports = {
     name: "permissions",
     aliases: ["perms", "yetkiler", "yetki"],
-    usage: lang.trusted_usage,
-    permissions: 999,
+    category: "moderation",
+    usage: "permissions_usage",
+    permissions: 10,
 
-    async run(client, message, sender, perms, prefix, args, content) {
+    async run(client, message, sender, perms, prefix, args, content, lang) {
         if (args.length > 1) {
-            if (lang.permissions_add_args.includes(args[0])) {
+            if (lang.permissions_set_args.includes(args[0])) {
                 try {
-                    permLevel = parseInt(args[2])
-                    client.setPermissions(message.mentionedJidList[0], permLevel)
-                    return client.reply(message.from, client.format(lang.permissions_successfull, permLevel), message.id);
+                    let permLevel = parseInt(args[2])
+                    client.setPermissions(client.purify(message.mentionedJidList[0]), permLevel)
+                    return client.reply(message.from, client.format(lang.permissions_successful, permLevel), message.id);
                 } catch {}
-            } else if (lang.permissions_get_args.includes(args[0])) {
-                perms = client.getPermissions(message.mentionedJidList[0])
+            } else if (message.mentionedJidList.lenght > 0) {
+                perms = client.getPermissions(client.purify(message.mentionedJidList[0]))
                 return client.reply(message.from, client.format(lang.permissions_user, perms), message.id);
             } else {
                 return client.reply(message.from, lang.permissions_usage, message.id);

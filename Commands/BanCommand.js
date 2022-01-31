@@ -1,16 +1,14 @@
-const config = require("../config.json")
-const lang = require(`../language.${config.language}.js`)
-
 module.exports = {
     name: "ban",
     aliases: ["kick"],
-    usage: lang.ban_usage,
-    permissions: 998,
+    category: "moderation",
+    usage: "ban_usage",
+    permissions: 5,
     
-    async run(client, message, sender, perms, prefix, args, content) {
+    async run(client, message, sender, perms, prefix, args, content, lang) {
         {
             if (message.isGroupMsg) {
-                admins = await client.getGroupAdmins(message.chatId)
+                let admins = await client.getGroupAdmins(message.chatId)
                 if (admins.includes(message.sender.id)) {
                     if (message.mentionedJidList.length > 0) {
                         var x = await client.removeParticipant(message.chatId, message.mentionedJidList[0]);

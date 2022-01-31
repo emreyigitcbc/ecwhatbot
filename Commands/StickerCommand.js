@@ -1,15 +1,14 @@
-const config = require("../config.json")
-const lang = require(`../language.${config.language}.js`)
 const { decryptMedia } = require("@open-wa/wa-decrypt");
 require("colors")
 
 module.exports = {
 	name: "sticker",
 	aliases: ["st"],
-	usage: lang.sticker_usage,
+	category: "general",
+	usage: "sticker_usage",
 	permissions: 0,
 
-	async run(client, message, sender, perms, prefix, args, content) {
+    async run(client, message, sender, perms, prefix, args, content, lang) {
 		stickerMetadata = {
 			author: "EC",
 			pack: "EC",

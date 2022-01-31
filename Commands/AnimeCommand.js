@@ -1,25 +1,23 @@
-const config = require("../config.json")
-const lang = require(`../language.${config.language}.js`)
 const hmfull = require("hmfull");
 const paths = ["HMtai", "Nekos", "NekoLove", "Miss"]
 const sub_paths = { HMtai_sfw: Object.keys(hmfull.HMtai.sfw), HMtai_nsfw: Object.keys(hmfull.HMtai.nsfw), Nekos_sfw: Object.keys(hmfull.Nekos.sfw), Nekos_nsfw: Object.keys(hmfull.Nekos.nsfw), NekoLove_sfw: Object.keys(hmfull.NekoLove.sfw), NekoLove_nsfw: Object.keys(hmfull.NekoLove.nsfw), Miss_sfw: Object.keys(hmfull.Miss.sfw), Miss_nsfw: Object.keys(hmfull.Miss.nsfw) }
 
 module.exports = {
     name: "anime",
-    usage: lang.anime_usage,
+    usage: "anime_usage",
+    category: "fun",
     aliases: ["hentai", "ht"],
     permissions: 0,
 
-    async run(client, message, sender, perms, prefix, args, content) {
-        let trusted = require("../SafeGroups.json")
-        if (!message.fromMe && !(perms >= 998)) if (message.chat.isGroup && !trusted.groups.includes(message.chat.contact.id)) return;
+    async run(client, message, sender, perms, prefix, args, content, lang) {
+        if (!message.fromMe) if (!await client.checkTrusted(message.chatId)) return;
         let path = null;
         let found = false;
         if (args.length > 0) {
             Object.keys(sub_paths).forEach(async key => {
                 if (sub_paths[key].includes(args[0]) && !found) {
                     found = true
-                    params = key.split("_")
+                    let params = key.split("_")
                     path = hmfull[params[0]][params[1]]
                     console.log(params)
                     try {

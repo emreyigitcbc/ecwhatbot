@@ -1,0 +1,12 @@
+{
+    "config": {
+        "language": "en",
+        "prefix": [
+            "/",
+            "!"
+        ],
+        "cooldown": 5
+    },
+    "users": {},
+    "groups": {}
+}

@@ -1,13 +1,12 @@
-const config = require("../config.json")
-const lang = require(`../language.${config.language}.js`)
 const util = require("util")
 module.exports = {
     name: "sendmessage",
     aliases: ["send", "mesajat"],
-    usage: lang.send_usage,
+    category: "moderation",
+    usage: "send_usage",
     permissions: 0,
 
-    async run(client, message, args, content) {
+    async run(client, message, sender, perms, prefix, args, content, lang) {
         {
             if(args[0] && args[0] == lang.send_verify_arg) {
                 if (client.send.has("verify")) {

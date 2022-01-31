@@ -1,14 +1,13 @@
-const config = require("../config.json")
-const lang = require(`../language.${config.language}.js`)
 const weather = require('weather-js')
 
 module.exports = {
     name: "weather",
-    usage: lang.weather_usage,
+    usage: "weather_usage",
     aliases: ["hava", "havadurumu", "meteroloji"],
+    category: "general",
     permissions: 0,
 
-    async run(client, message, sender, perms, prefix, args, content) {
+    async run(client, message, sender, perms, prefix, args, content, lang) {
         try {
             const city = args[0];
             weather.find({search: city, degreeType: 'C'}, async function (error, result){
