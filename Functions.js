@@ -55,7 +55,7 @@ module.exports = {
     return global.db.cache.groups[groupId];
   },
   async createUser(userId) {
-    await global.db.ref("/users/" + userId).set({ permissions: false, language: config.config.language, watchfordeletedgroup: true, watchfordeletedpriv: false, ts: Date.now() })
+    await global.db.ref("/users/" + userId).set({ permissions: 0, language: config.config.language, watchfordeletedgroup: true, watchfordeletedpriv: false, ts: Date.now() })
     return this.checkUserExists(userId);
   },
   async createGroup(groupId) {
