@@ -20,8 +20,11 @@ Simple, customizable, firebase WhatsApp bot with `19` commands!
   - If you want to blacklist users, you can use "unwatch @user"
   - To rewatch his deleted messages, you can user "watch @user"
 - Cooldown system that prevents spams!
+- Did you forget your phone at home? Send yourself a message from your friend's phone (with password, default password is `P@SSW0RD`), and it will send a message to your specified contact.
 - It has user-specified multi-language system! Every user can change own bot language. By using "setlang" command. Also, you can translate it in your language! Copy one of the language files and rename it to `language.LANG_CODE.js` and change language option in config to LANG_CODE.
 - The language option in database is just for console language.
+
+- Vote command that makes whatsapp groups more democratic.
 
 - **It has "Trusted groups system", so if you add a group to trusted groups, everyone in that group can use some sensitive commands. Otherwise they can't use it. (Sensitive commands are: anime, everyone etc.)**
 - **If you are using modded whatsapp, you must set "multiDevice" to true (`index.js`) and join multi device beta program from whatsapp. Otherwise it won't detect deleted messages. If you're not using modded whatsapp, I recommend you to set it false.**
@@ -29,7 +32,6 @@ Simple, customizable, firebase WhatsApp bot with `19` commands!
 
 There is a main Help command and you can get help about any command. Just type `/help <command>`. Also you can see command list by typing `/help`.
 
-  
 
 ### Command List
 - `Ng` and `Np` means, group and private.  `T` means, group must be in trusted list.
@@ -45,7 +47,7 @@ There is a main Help command and you can get help about any command. Just type `
 | everyone | message | Tags everyone in group and sends the specified message. | (5+T)g | group |
 | modules | reload/load/unload load,unload: module name | This command is only for developers. | 999p, 999g | private, group |
 | permission | set/@user set: permission number | Sets or gets user permission. | 10g | group |
-| sendmessage | -c ContactName -m Message -s SecretCode | Sends a message to host's contact. | 0g, 0p | private, group |
+| sendmessage | contact name or number/password/message | Sends a message to host's contact. | 0g, 0p | private, group |
 | sticker | Explained below. | Converts images/gifs/videos to sticker. | 0g, 0p | private, group |
 | trusted | add/remove | Adds or removes group from trusted groups list. | 10g | group |
 | watchgroup |  | Enables listening for "deleted messages" in a group. | 10g | group |
@@ -56,6 +58,9 @@ There is a main Help command and you can get help about any command. Just type `
 | wiki | topic | Gets article from wikipedia. | 0p, 0g | private, group |
 | youtube | url | Converts youtube video to sound. | 0p, 0g | private, group |
 | setlang | language code | Changes own bot language. | 0p, 0g | private, group |
+| vote | option1/option2 (optional options) | Creates voting. | 0p, 0g | group |
+
+
 - Maybe you can't understand sticker command but it is really easy to use. Mention a photo/gif/video by typing `/sticker <options>`. But the thing is there are many options! (Background remover not working for now.)
 
   
@@ -80,7 +85,14 @@ There is a main Help command and you can get help about any command. Just type `
 
 -  **-size <number>**: Specifies one edge of video (Video shape is square)
 
-  
+##### Vote Options:
+- **-timer**: Sets timer for vote. Example: 10s, 10secs, 10min, 10m, 10h, 24h, 1d...
+- **-max**: Sets vote limit for vote. Example: /vote option1/option2 -max 3 -timer 30m
+- **-end**: Ends vote in that group. Example: /vote -end
+- Example usage of vote command: /vote World is flat/World is cubic -timer 15m -max 15
+
+- Example usage of send command: /send Mother/superSecretPasword/hi mom, i will be late!
+- Then, it will ask you to verify. You can simply verify it by typing /send verify or to delete, /send delete
 
 ## Installing and First Start
 

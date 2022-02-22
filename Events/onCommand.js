@@ -2,11 +2,14 @@ const { client } = require('../index');
 
 client.onAnyMessage(async message => {
 	try {
-		if (message.isMedia) messageContent = message.caption.toLowerCase(); else messageContent = message.body.toLowerCase();
+		if (message.isMedia) originalContent = message.caption; else originalContent = message.body
 		let prefix = global.db.cache.config.prefix;
 		prefix.forEach(async selectedPrefix => {
+			let messageContent = originalContent.toLowerCase();
 			if (messageContent.includes(selectedPrefix)) {
+				try {
 				args = messageContent.slice(selectedPrefix.length).trim().split(/ +/g);
+				originalContent = originalContent.slice(selectedPrefix.length).trim().split(/ +/g).slice(1).join(" ")
 				command = args.shift();
 				sender = message.sender.pushname;
 				if (client.commands.has(command)) {
@@ -26,10 +29,11 @@ client.onAnyMessage(async message => {
 								}, global.db.cache.config.cooldown * 1000);
 							}
 							message.chatId = client.purify(message.chatId)
-							cmd.run(client, message, message.sender.id, userPerms, selectedPrefix, args, messageContent, require(`../Langs/language.${global.db.cache.users[message.sender.id].language}.js`))
+							cmd.run(client, message, message.sender.id, userPerms, selectedPrefix, args, originalContent, require(`../Langs/language.${global.db.cache.users[message.sender.id].language}.js`))
 						} else return;
-					} catch (err) { return console.log(err) }
+					} catch (err) { console.log(err) }
 				} else return;
+			} catch (err) { console.log(err)}
 			}
 		})
 	} catch { }

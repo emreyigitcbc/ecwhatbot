@@ -1,6 +1,5 @@
 const lang = require(`./Langs/language.${global.db.cache.config.language}.js`)
 const fs = require("fs");
-const { client } = require(".");
 require('colors');
 
 module.exports = (bot) => {
@@ -11,6 +10,7 @@ module.exports = (bot) => {
     bot.xox = new Map();
     bot.send = new Map();
     bot.cooldown = new Map();
+    bot.votes = new Map();
     bot.userAgent = "WhatsApp/2.2029.4 Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
 
     // EVENTS
@@ -22,7 +22,7 @@ module.exports = (bot) => {
         eventFiles.forEach((f, i) => {
             bot.modules.push("../Events/" + f)
             prop = require(`./Events/${f}`);
-            console.log(lang.event_loaded, prop.name, f)
+            console.log(lang.event_loaded.yellow, prop.name, f)
         });
         console.log(lang.events_loaded.green);
     });
@@ -35,7 +35,7 @@ module.exports = (bot) => {
         cmdFiles.forEach((f, i) => {
             var props = require(`./Commands/${f}`);
             bot.modules.push("./" + f)
-            console.log(lang.command_loaded, props.name, f, props.aliases.join(", "))
+            console.log(lang.command_loaded.yellow, props.name, f, props.aliases.join(", "))
             bot.commands.set(props.name, props);
             if (!props.hasOwnProperty("aliases")) {
                 bot.commands_list[props.category].push(props.name);

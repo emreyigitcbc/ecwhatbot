@@ -1,6 +1,6 @@
 {
   "name": "ecwhatsbot",
-  "version": "3.2.2",
+  "version": "3.2.1",
   "description": "WhatsApp bot. Ezz",
   "main": "index.js",
   "scripts": {
@@ -17,12 +17,13 @@
     "colors": "1.4.0",
     "firebase-admin": "^10.0.2",
     "hmfull": "^1.3.0",
+    "ms": "^2.1.3",
     "weather-js": "^2.0.0",
     "wikijs": "^6.3.3",
-    "ytdl-core": "^4.10.0"
+    "ytdl-core": "^4.10.1"
   },
   "engines": {
-    "node": "^v14"
+    "node": ">14.0.0"
   },
   "devDependencies": {
     "decache": "^4.6.1"
