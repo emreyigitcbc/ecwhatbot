@@ -89,11 +89,11 @@ There is a main Help command and you can get help about any command. Just type `
 - **-timer**: Sets timer for vote. Example: 10s, 10secs, 10min, 10m, 10h, 24h, 1d...
 - **-max**: Sets vote limit for vote. Example: /vote option1/option2 -max 3 -timer 30m
 - **-end**: Ends vote in that group. Example: /vote -end
-- Example usage of vote command: /vote World is flat/World is cubic -timer 15m -max 15
-
   
-- Example usage of send command: /send Mother/superSecretPasword/hi mom, i will be late!
-- Then, it will ask you to verify. You can simply verify it by typing /send verify or to delete, /send delete
+  
+Example usage of vote command: /vote World is flat/World is cubic -timer 15m -max 15
+Example usage of send command: /send Mother/superSecretPasword/hi mom, i will be late!
+Then, it will ask you to verify. You can simply verify it by typing /send verify or to delete, /send delete
 
 ## Installing and First Start
 
