@@ -1,6 +1,6 @@
 {
-  "name": "ecwhatsbot",
-  "version": "3.2.1",
+  "name": "ecwhatbot",
+  "version": "3.5.0",
   "description": "WhatsApp bot. Ezz",
   "main": "index.js",
   "scripts": {
