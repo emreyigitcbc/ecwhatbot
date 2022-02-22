@@ -1,6 +1,6 @@
 
 # ecwhatbot
-Simple, customizable, firebase WhatsApp bot with `19` commands!
+Simple, customizable, firebase WhatsApp bot with `20` commands!
 
 ## Features
 
