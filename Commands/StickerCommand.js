@@ -60,10 +60,10 @@ module.exports = {
 				videoSettings.crop = false
 			}
 		}
-		this.sendSticker(client, message, stickerMetadata, videoSettings)
+		this.sendSticker(client, message, stickerMetadata, videoSettings, lang)
 	},
 
-	async sendSticker(client, message, stickerMetadata, videoSettings) {
+	async sendSticker(client, message, stickerMetadata, videoSettings, lang) {
 		var now = Date.now();
 		if (message.isMedia && message.type === "image") {
 			console.log(lang.sticker_log_request, message.from, "IMAGE1")
