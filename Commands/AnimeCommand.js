@@ -1,16 +1,26 @@
 const hmfull = require("hmfull");
-const paths = ["HMtai", "Nekos", "NekoLove", "Miss"]
-const sub_paths = { HMtai_sfw: Object.keys(hmfull.HMtai.sfw), HMtai_nsfw: Object.keys(hmfull.HMtai.nsfw), Nekos_sfw: Object.keys(hmfull.Nekos.sfw), Nekos_nsfw: Object.keys(hmfull.Nekos.nsfw), NekoLove_sfw: Object.keys(hmfull.NekoLove.sfw), NekoLove_nsfw: Object.keys(hmfull.NekoLove.nsfw), Miss_sfw: Object.keys(hmfull.Miss.sfw), Miss_nsfw: Object.keys(hmfull.Miss.nsfw) }
+var paths = []
+var sub_paths = {}
+var help = "";
+for(var path of Object.keys(hmfull)) {
+    if (path == "Manual") break;
+    paths.push(path);
+    help += "*"+path+"*\n"
+    for(var sub_path of Object.keys(hmfull[path])){
+        sub_paths[path + "_" + sub_path] = Object.keys(hmfull[path][sub_path])
+        help += "*"+sub_path +":* "+Object.keys(hmfull[path][sub_path]).join(", ")+"\n"
+    }
+}
 
 module.exports = {
     name: "anime",
     usage: "anime_usage",
+    usage_data: [help],
     category: "fun",
     aliases: ["hentai", "ht"],
     permissions: 0,
 
     async run(client, message, sender, perms, prefix, args, content, lang) {
-        if (!message.fromMe) if (!await client.checkTrusted(message.chatId)) return;
         let path = null;
         let found = false;
         if (args.length > 0) {
@@ -19,7 +29,6 @@ module.exports = {
                     found = true
                     let params = key.split("_")
                     path = hmfull[params[0]][params[1]]
-                    console.log(params)
                     try {
                         const anime = await path[args[0]]()
                         await client.sendImage(message.from, anime.url, 'file.jpg');
@@ -33,7 +42,6 @@ module.exports = {
                     if (path.sfw.hasOwnProperty(args[1].toLowerCase())) {
                         found = true
                         try {
-                            console.log(elem)
                             const anime = await path.sfw[args[1].toLowerCase()]()
                             await client.sendImage(message.from, anime.url, 'file.jpg');
                             return;

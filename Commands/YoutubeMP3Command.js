@@ -13,11 +13,11 @@ module.exports = {
 			const videoURL = args[0];
 			var now = Date.now();
 			const data = await ytdl.getInfo(videoURL)
-			if (Number(data.videoDetails.lengthSeconds) > 500) return await client.reply(message.from, lang.ytmp3_too_long, message.id)
-			console.log(lang.ytmp3_log_request, message.sender.id)
+			if (Number(data.videoDetails.lengthSeconds) > 600) return await client.reply(message.from, lang.ytmp3_too_long, message.id)
+			console.log(lang.ytmp3_log_request, sender)
 			async function sendIt() {
 				await client.sendFile(message.from, message.from.replace("@", "_") + '.mp3', "audio", "audio", null, false, true, false, false);
-				console.log(lang.ytmp3_log_sent, message.sender.id, Date.now() - now)
+				console.log(lang.ytmp3_log_sent, sender, Date.now() - now)
 				return;
 			}
 			const download = ytdl(videoURL, { filter: 'audioonly' });

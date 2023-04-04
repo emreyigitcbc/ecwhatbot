@@ -12,7 +12,7 @@ module.exports = {
             query = args.join(" ")
             try {
                 data = wiki({ apiUrl: `https://${lang.language}.wikipedia.org/w/api.php` }).page(query).then(page => page.rawContent()).then(content => {
-                    return client.reply(message.from, content.substring(0, 2000) + "...", message.id)
+                    return client.reply(message.from, content.substring(0, 4000) + "...", message.id)
                 }).catch(err => {
                     return client.reply(message.from, lang.wiki_not_found, message.id)
                 })

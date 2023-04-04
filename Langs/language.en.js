@@ -21,7 +21,7 @@ module.exports = {
     help: "```CebeciBot```\n*Help Page*\n%s\nFor detailed information about commands: %shelp <command>",
     help_usage: ":D?",
 
-    anime_usage: `anime <provider/category> <if provider provided: category>\nProviders and lists:\n*HMtai*\nwallpaper, mobileWallpaper, neko, jahy, lick, slap, ass, bdsm, cum, creampie, manga, femdom, hentai, incest, masturbation, public, ero, orgy, elves, yuri, pantsu, glasses, cuckold, blowjob, boobjob, foot, thighs, vagina, ahegao, uniform, gangbang, tentacles, gif, nsfwNeko, nsfwMobileWallpaper, zettaiRyouiki\n*Nekos*\npat, hug, kiss, cry, slap, smug, punch, neko, kitsune, waifu, hentai, neko, lesbian, kuni, classic, boobs, blowjob, anal, yuri, trap, tits, femdom, feet, pussy, ero, erofeet, erokitsu, erokemo, eroyuri, eroneko, ledwkitsu, lewdneko, lewdkemo, bj, pwankg, cum, keta, spank, pussyJpg, cumJpg, avatar, wallpaper, holoero, hololewd, futarani, gasm, foxgirl\n*NekoLove*\npat, hug, kiss, cry, slap, smug, punch, neko, kitsune, waifu, nekolewd\n*Miss*\nhug, kiss, cry, kill, view, dance, pussy, boobs, ero`,
+    anime_usage: `Sends anime pic %sanime <provider/category> <if provider provided: category> (Don't need to specify nsfw/sfw)\nProviders and lists:\n%s`,
 
     weather_usage: "weather <city>",
     weather_error: "An error occured, please try again later.",
@@ -78,9 +78,13 @@ module.exports = {
     adminunban_usage: "Pardons user from using bot.",
     adminunban_successful: "User successfuly pardoned!",
 
-    trusted_usage: "It adds a group to trusted group list or it removes from trusted group list.\ntrusted add/del",
-    trusted_remove_args: ["delete", "remove", "del"],
-    trusted_add_args: ["add"],
+    trust_usage: "It adds a group or user to trusted list. \ntrust <@tags...>",
+    trust_user_trusted: "User successfully trusted!",
+    trust_group_trusted: "Group successfully trusted!",
+
+    untrust_usage: "It removes a group or user from trusted list. \nuntrust <@tags...>",
+    untrust_user_untrusted: "User successfully untrusted!",
+    untrust_group_untrusted: "Group successfully untrusted!",
 
     setlang_usage: "It changes bot's language. Available languages: %s",
     setlang_successful: "The language of bot changed successfuly!",
@@ -88,18 +92,8 @@ module.exports = {
     permissions_usage: "Gives permissions to user or gets the permissions of user. Permissions are global.\nperms set/get @tag <add: perm level>",
     permissions_set_args: ["set", "give"],
     permissions_successful: "User's permissions set to: *%s*",
+    permissions_failed: "The permission that you want to set (%s) must be lower than yours! (%s)",
     permissions_user: "User's permissions: %s",
-
-    vote_usage: "Usage: createvote <first/second> <options> (available options: -timer <Ns, Nm, Nh>, -max <n>, -end).\n Use vote -end to finish vote in that group.",
-    vote_args: ["-timer", "-max", "-end"],
-    vote_noone: "NOBODY",
-    vote_won: "WON",
-    vote_nobody_won: "WON",
-    vote_no_timeout: "NO TIMEOUT",
-    vote_no_max: "NO LIMIT",
-    vote_ended: "*Vote ended!*\n*Results:*\n_%s => %s_\n_%s => %s_\n*Winner:*\n%s %s",
-    vote_status: "*Vote Status:*\n_%s => %s_\n_%s => %s_",
-    vote_started: "*Vote started!*\n_Options are:_\n1- %s\n2- %s\nTo vote for 1, reply this message with '+1' otherwise '-1'.\nVote ends in: %s\nVote limit: %s",
 
     watchgroup_usage: "Enables listening for deleted messages in a group.",
     watchgroup_successful: "This group will be watched...",

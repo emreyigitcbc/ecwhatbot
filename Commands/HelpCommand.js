@@ -9,7 +9,12 @@ module.exports = {
 		if (args.length > 0) {
 			if(client.commands.has(args[0].toLowerCase())) {
 				usage = lang[client.commands.get(args[0].toLowerCase()).usage];
-				return client.reply(message.from, client.format(usage, prefix), message.id)
+				usage_args = client.commands.get(args[0].toLowerCase())?.usage_data || [];
+				var temp_string = client.format(usage, prefix);
+				for(var i = 0; i < usage_args.length; i++) {
+					temp_string = client.format(temp_string, usage_args[i])
+				}
+				return client.reply(message.from, temp_string, message.id)
 			}
 		} else {
 			a = ""

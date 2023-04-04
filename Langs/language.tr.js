@@ -21,7 +21,7 @@ module.exports = {
     help: "```CebeciBot```\n*Yardım Sayfası*\n%s\nKomutlar hakkında detaylı bilgi için: %syardım <komut>",
     help_usage: ":D?",
 
-    anime_usage: `anime <sağlayıcı/kategori> <sağlayıcı girildiyse: kategori>\nSağlayıcılar ve listeleri:\n*HMtai*\nwallpaper, mobileWallpaper, neko, jahy, lick, slap, ass, bdsm, cum, creampie, manga, femdom, hentai, incest, masturbation, public, ero, orgy, elves, yuri, pantsu, glasses, cuckold, blowjob, boobjob, foot, thighs, vagina, ahegao, uniform, gangbang, tentacles, gif, nsfwNeko, nsfwMobileWallpaper, zettaiRyouiki\n*Nekos*\npat, hug, kiss, cry, slap, smug, punch, neko, kitsune, waifu, hentai, neko, lesbian, kuni, classic, boobs, blowjob, anal, yuri, trap, tits, femdom, feet, pussy, ero, erofeet, erokitsu, erokemo, eroyuri, eroneko, ledwkitsu, lewdneko, lewdkemo, bj, pwankg, cum, keta, spank, pussyJpg, cumJpg, avatar, wallpaper, holoero, hololewd, futarani, gasm, foxgirl\n*NekoLove*\npat, hug, kiss, cry, slap, smug, punch, neko, kitsune, waifu, nekolewd\n*Miss*\nhug, kiss, cry, kill, view, dance, pussy, boobs, ero`,
+    anime_usage: `Anime fotosu atar %sanime <sağlayıcı/kategori> <sağlayıcı girildiyse: kategori> (sfw/nsfw olarak belirtmenize gerek yok)\nSağlayıcılar ve listeleri:\n%s`,
 
     weather_usage: "hava <şehir>",
     weather_error: "Bir hata meydana geldi, lütfen daha sonra tekrar deneyiniz.",
@@ -78,9 +78,13 @@ module.exports = {
     adminunban_usage: "Botu kullanması alıkonulmuş kullanıcıya tekrar botu kullanma izni verir.",
     adminunban_successful: "Kullanıcının yasağı başarıyla kalktı!",
 
-    trusted_usage: "Bir grubu güvenli listeye eklemeye veya güvenli listeden çıkarmaya yarar.\ngüvenli ekle/sil",
-    trusted_remove_args: ["sil", "çıkar", "delete"],
-    trusted_add_args: ["ekle"],
+    trust_usage: "Bir grubu veya kullanıcıyı güvenli listeye ekler. \ngüven <@etiketler...>",
+    trust_user_trusted: "Etiketli kullanıcılara güvenildi!",
+    trust_group_trusted: "Bu gruba güvenildi!",
+
+    untrust_usage: "Bir grubu veya kullanıcıyı güvenli listeden siler. \ngüvenme <@etiketler...>",
+    untrust_user_untrusted: "Etiketli kullanıcılara olan güvenin kırıldı!",
+    untrust_group_untrusted: "Bu gruba olan güvenin kırıldı!",
 
     setlang_usage: "Botun dilini değiştirmeye yarar.",
     setlang_successful: "Botun dili başarıyla değiştirildi!",
@@ -88,18 +92,8 @@ module.exports = {
     permissions_usage: "Bir kişiye yetki vermeye yarar. Yetkiler globaldir.\nyetki ekle/çek @etiket <ekle: yetki seviyesi>",
     permissions_set_args: ["belirle", "set"],
     permissions_successful: "Kullanıcının yetkisi %s olarak güncellendi.",
+    permissions_failed: "Ayarlamak istediğiniz yetki (%s), sizin yetkinizden (%s) daha küçük olmalı!",
     permissions_user: "Kullanıcının yetkisi: %s",
-
-    vote_usage: "Kullanım: oy <birinci / ikinci> <seçenekler> (kullanılabilir seçenekler: -zamanlayıcı <Ns, Nm, Nh>, -max <n>, -bitir).\nvote -bitir yazarak o gruptaki oylamayı bitirebilirsiniz.",
-    vote_args: ["-zamanlayıcı", "-max", "-bitir"],
-    vote_noone: "HİÇKİMSE",
-    vote_won: "KAZANDI",
-    vote_nobody_won: "KAZANAMADI",
-    vote_no_timeout: "ZAMAN SINIRLAMASI YOK",
-    vote_no_max: "OY SINIRLAMASI YOK",
-    vote_ended: "*OYLAMA BİTTİ!*\n*VERİLEN OYLAR:*\n_%s => %s_\n_%s => %s_\n*SONUÇ:*\n*%s %s*",
-    vote_status: "*OYLAMA DURUMU:*\n_%s => %s_\n_%s => %s_",
-    vote_started: "*OYLAMA BAŞLADI!*\n*_Seçenekler:_*\n*1-* %s\n*2-* %s\n1.'ye oy vermek için bu mesajı alıntılayarak '+1' yazın, diğer seçenek için '-1'.\n*Oylamanın Bitmesine:* %s\n*Oy limiti:* %s",
 
     watchgroup_usage: "Bir grupta olan olayları izlemeyi aktifleştirir.",
     watchgroup_successful: "Bu grup artık izlenecek...",

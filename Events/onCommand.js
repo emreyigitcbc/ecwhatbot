@@ -2,34 +2,46 @@ const { client } = require('../index');
 
 client.onAnyMessage(async message => {
 	try {
-		if (message.isMedia) originalContent = message.caption; else originalContent = message.body
-		let prefix = global.db.cache.config.prefix;
-		prefix.forEach(async selectedPrefix => {
-			let messageContent = originalContent.toLowerCase();
-			if (messageContent.includes(selectedPrefix)) {
+		var content = "";
+		// Unsupported message types
+		if (message.type == "gp2" || message.type == "buttons_response" || message.type == "document" || message.type == "revoked" || message.type == "ptt" || message.type == "location" || message.type == "sticker" || message.type == "unknown" || message.type == "vcard" || message.type == "multi_vcard") return;
+		// Supported message types
+		if (message.type == "chat") content = message.body;
+		if (message.type == "image" || message.type == "video") content = message.caption || "";
+		if (content == "") return;
+		global.db.client.prefix.split(",").forEach(async selectedPrefix => {
+			if (content.includes(selectedPrefix)) {
 				try {
-				args = messageContent.slice(selectedPrefix.length).trim().split(/ +/g);
-				originalContent = originalContent.slice(selectedPrefix.length).trim().split(/ +/g).slice(1).join(" ")
-				command = args.shift();
-				sender = message.sender.pushname;
+				args = content.slice(selectedPrefix.length).trim().split(/ +/g);
+				content = content.slice(selectedPrefix.length).trim().split(/ +/g).slice(1).join(" ")
+				command = args.shift().toLowerCase();
 				if (client.commands.has(command)) {
 					cmd = client.commands.get(command)
 					try {
-						message.sender.id = client.purify(message.sender.id)
-						if(client.cooldown.has(message.sender.id)) return;
-						if (!global.db.cache.users.hasOwnProperty(message.sender.id)) await client.createUser(message.sender.id)
-						if (message.fromMe) message.from = message.to
-						if (message.fromMe) userPerms = 999; else userPerms = await client.getPermissions(message.sender.id);
+						message.sender.cleanId = client.purify(message.sender.id); // Clearing the ID (replaces @g.us, @c.us, etc.)
+						message.cleanChatId = client.purify(message.chatId)
+						if (client.cooldown.has(message.sender.cleanId)) return; // Check for cooldown
+						global.db.users.create(message.sender.cleanId, message.sender.pushname)
+						if(message.isGroupMsg) {
+							global.db.groups.create(message.cleanChatId)
+							if(!global.db.groups.get(message.cleanChatId).safe) if(!message.fromMe && !global.db.groups.get(message.cleanChatId).safe_users.includes(message.sender.cleanId)) return;
+						}
+						let userPerms = global.db.users.get(message.sender.cleanId).permissions;
+						if (message.fromMe){
+							message.from = message.to
+							userPerms = 10
+						}
 						if (userPerms == -1) return;
-						if (cmd.permissions <= userPerms) {
-							if (userPerms != 999) {
-								client.cooldown.set(message.sender.id, true)
+						// If user has permissions, run command!
+						if (cmd.permissions <= userPerms || message.fromMe) {
+							// 10 - admin
+							if (userPerms != 10 && !message.fromMe) {
+								client.cooldown.set(message.sender.cleanId, true)
 								setTimeout(() => {
-									client.cooldown.delete(message.sender.id)
-								}, global.db.cache.config.cooldown * 1000);
+									client.cooldown.delete(message.sender.cleanId)
+								}, global.db.client.cooldown * 1000);
 							}
-							message.chatId = client.purify(message.chatId)
-							cmd.run(client, message, message.sender.id, userPerms, selectedPrefix, args, originalContent, require(`../Langs/language.${global.db.cache.users[message.sender.id].language}.js`))
+							cmd.run(client, message, message.sender.cleanId, userPerms, selectedPrefix, args, content, require(`../Langs/language.${global.db.users.get(message.sender.cleanId).language}.js`))
 						} else return;
 					} catch (err) { console.log(err) }
 				} else return;

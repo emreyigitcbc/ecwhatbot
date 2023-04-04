@@ -3,7 +3,7 @@ module.exports = {
     aliases: ["kick"],
     category: "moderation",
     usage: "ban_usage",
-    permissions: 5,
+    permissions: 1,
     
     async run(client, message, sender, perms, prefix, args, content, lang) {
         {

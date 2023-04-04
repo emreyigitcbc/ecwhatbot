@@ -3,7 +3,7 @@ module.exports = {
     aliases: ["etiketle", "everyone"],
     category: "moderation",
     usage: "mention_usage",
-    permissions: 0,
+    permissions: 2,
 
     async run(client, message, sender, perms, prefix, args, content, lang) {
         if (args.length > 0 && message.isGroupMsg) {

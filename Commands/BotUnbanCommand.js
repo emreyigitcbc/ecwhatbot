@@ -8,7 +8,8 @@ module.exports = {
     async run(client, message, sender, perms, prefix, args, content, lang) {
         if (message.mentionedJidList.length > 0) {
             try {
-                client.setPermissions(client.purify(message.mentionedJidList[0]), 0)
+                global.db.users.create(message.mentionedJidList[0]);
+                global.db.users.get(client.purify(message.mentionedJidList[0])).setPermissions(0)
                 return client.reply(message.from, lang.adminunban_successful, message.id);
             } catch { }
         } else {

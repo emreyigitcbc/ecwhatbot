@@ -60,13 +60,13 @@ module.exports = {
 				videoSettings.crop = false
 			}
 		}
-		this.sendSticker(client, message, stickerMetadata, videoSettings, lang)
+		this.sendSticker(client, message, sender, stickerMetadata, videoSettings, lang)
 	},
 
-	async sendSticker(client, message, stickerMetadata, videoSettings, lang) {
+	async sendSticker(client, message, sender, stickerMetadata, videoSettings, lang) {
 		var now = Date.now();
 		if (message.isMedia && message.type === "image") {
-			console.log(lang.sticker_log_request, message.from, "IMAGE1")
+			console.log(lang.sticker_log_request, sender, "IMAGE1")
 			var media = await decryptMedia(message, client.userAgent);
 			/*if (stickerMetadata.removeBackgroundEC) {
 				img_result = `data:image/jpeg;base64,${media.toString("base64")}`
@@ -74,12 +74,12 @@ module.exports = {
 			}*/
 			try {
 				await client.sendImageAsSticker(message.from, media, stickerMetadata);
-				return console.log(lang.sticker_log_sent, message.from, "IMAGE1", Date.now() - now)
+				return console.log(lang.sticker_log_sent, sender, "IMAGE1", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, message.from, "IMAGE1", error.red)
+				return console.log(lang.sticker_log_error.red, sender, "IMAGE1", error.red)
 			}
 		} else if (message.quotedMsgObj && message.quotedMsgObj.type === "image") {
-			console.log(lang.sticker_log_request, message.from, "IMAGE2")
+			console.log(lang.sticker_log_request, sender, "IMAGE2")
 			var media = await decryptMedia(message.quotedMsgObj, client.userAgent);
 			/*if (stickerMetadata.removeBackgroundEC) {
 				img_result = `data:image/jpeg;base64,${media.toString("base64")}`
@@ -87,32 +87,32 @@ module.exports = {
 			}*/
 			try {
 				await client.sendImageAsSticker(message.from, media, stickerMetadata);
-				return console.log(lang.sticker_log_sent, message.from, "IMAGE2", Date.now() - now)
+				return console.log(lang.sticker_log_sent, sender, "IMAGE2", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, message.from, "IMAGE2", error.red)
+				return console.log(lang.sticker_log_error.red, sender, "IMAGE2", error.red)
 			}
 		} else if ((message.isMedia || message.isGif) || (message.mimetype === "video/mp4" || message.mimetype === "image/gif") || message.type === "video") {
-			console.log(lang.sticker_log_request, message.from, "VIDEO1")
+			console.log(lang.sticker_log_request, sender, "VIDEO1")
 			const mediaData = await decryptMedia(message, client.userAgent);
-			if (message.duration > 10) client.reply(message.from, lang.sticker_duration, message.id);
+			if (message.duration > 10) client.reply(sender, lang.sticker_duration, message.id);
 			try {
 				await client.sendMp4AsSticker(message.from, mediaData, videoSettings, stickerMetadata);
-				return console.log(lang.sticker_log_sent, message.from, "VIDEO1", Date.now() - now)
+				return console.log(lang.sticker_log_sent, sender, "VIDEO1", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, message.from, "VIDEO1", error.red)
+				return console.log(lang.sticker_log_error.red, sender, "VIDEO1", error.red)
 			}
 		} else if ((message.quotedMsgObj) && (message.quotedMsgObj.isMedia || message.quotedMsgObj.isGif || message.quotedMsgObj.mimetype === "video/mp4" || message.quotedMsgObj.mimetype === "image/gif" || message.quotedMsgObj.type === "video")) {
-			console.log(lang.sticker_log_request, message.from, "VIDEO2")
+			console.log(lang.sticker_log_request, sender, "VIDEO2")
 			const mediaData = await decryptMedia(message.quotedMsgObj, client.userAgent);
-			if (message.quotedMsgObj.duration > 10) client.reply(message.from, lang.sticker_duration, message.id);
+			if (message.quotedMsgObj.duration > 10) client.reply(sender, lang.sticker_duration, message.id);
 			try {
 				await client.sendMp4AsSticker(message.from, mediaData, videoSettings, stickerMetadata);
-				return console.log(lang.sticker_log_sent, message.from, "VIDEO2", Date.now() - now)
+				return console.log(lang.sticker_log_sent, sender, "VIDEO2", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, message.from, "VIDEO2", error.red)
+				return console.log(lang.sticker_log_error.red, sender, "VIDEO2", error.red)
 			}
 		} else {
-			return client.reply(message.from, lang.sticker_no_quote, message.id);
+			return client.reply(sender, lang.sticker_no_quote, message.id);
 		}
 	}
 }
