@@ -32,58 +32,59 @@ I switched to JSON from firebase, because I got feedbacks about it is hard to se
 **global.db.users.create(userid, ?name):** if user exists in database does nothing, otherwise it creates `User` object and returns it. (name is reserved for future)
 ---
 - **Groups** 
-**global.db.groups.json:** returns `groups.json`
-**global.db.groups.get(groupid):** returns `Group` object if exists
-**global.db.groups.has(groupid):** if user exists in database, return true otherwise returns false
-**global.db.groups.create(groupid, ?name):** if user exists in database does nothing, otherwise it creates `Group` object and returns it. (name is reserved for future)
+- - **global.db.groups.json:** returns `groups.json`
+- - **global.db.groups.get(groupid):** returns `Group` object if exists
+
+- - **global.db.groups.has(groupid):** if user exists in database, return true otherwise returns false
+- - **global.db.groups.create(groupid, ?name):** if user exists in database does nothing, otherwise it creates `Group` object and returns it. (name is reserved for future)
 ---
 - **Client** 
-**global.db.client.json:** returns `client.json`
-**global.db.client.id:** returns ID of client (reserved for future)
-**global.db.client.prefix:** returns prefixes
-**global.db.client.cooldown:** returns cooldown value
-**global.db.client.settings:** returns extra settings (reserved for future)
-**global.db.client.language:** returns language code
+- - **global.db.client.json:** returns `client.json`
+- - **global.db.client.id:** returns ID of client (reserved for future)
+- - **global.db.client.prefix:** returns prefixes
+- - **global.db.client.cooldown:** returns cooldown value
+- - **global.db.client.settings:** returns extra settings (reserved for future)
+- - **global.db.client.language:** returns language code
 ---
 - **Classes** 
-**class User(UserData):**
--- ***id:*** WhatsApp ID of user
--- ***name:*** WhatsApp display name of user
--- ***language:*** User-specific language (en)
--- ***watching:*** reserved for future
--- ***permissions:*** Permissions to use commands (0)
--- ***settings:*** reserved for future ({})
--- ***json:*** Returns `users.json`
--- ***setName(string):*** Changes name of user object.
--- ***setLanguage(string):*** Changes language of user object.
--- ***setWatching(bool):*** Changes watching status of user object.
--- ***setPermissions(int):*** Changes permissions of user object.
--- ***setSettings(object):*** Changes settings of user object.
-**class Group(GroupData):**
--- ***id:*** WhatsApp ID of group
--- ***name:*** WhatsApp display name of group
--- ***language:*** Group-specific language (en)
--- ***safe:*** Trusted status of group (false)
--- ***safe_users:*** Trusted users in this group ([])
--- ***settings:*** reserved for future ({})
--- ***json:*** Returns `groups.json`
--- ***setName(string):*** Changes name of group object.
--- ***setLanguage(string):*** Changes language of group object.
--- ***setSafe(bool):*** Changes safe status of group object.
--- ***setSafeUser(string userId, bool status):*** Changes permissions of group object.
--- ***setSettings(object):*** Changes settings of group object.
-**class Client(ClientData):**
--- ***id:*** WhatsApp ID of host account
--- ***prefix:*** WhatsApp display name of user (/,!)
--- ***language:*** User-specific language (en)
--- ***cooldown:*** Cooldown between commands. (5)
--- ***settings:*** reserved for future ({})
--- ***json:*** Returns `client.json`
--- ***setId(string):*** Changes id of client object.
--- ***setLanguage(string):*** Changes language of client object.
--- ***setPrefix(bool):*** Changes prefixes of client object.
--- ***setCooldown(int):*** Changes cooldown time of client object.
--- ***setSettings(object):*** Changes settings of client object.
+- **class User(UserData):**
+- - ***id:*** WhatsApp ID of user
+- - ***name:*** WhatsApp display name of user
+- - ***language:*** User-specific language (en)
+- - ***watching:*** reserved for future
+- - ***permissions:*** Permissions to use commands (0)
+- - ***settings:*** reserved for future ({})
+- - ***json:*** Returns `users.json`
+- - ***setName(string):*** Changes name of user object.
+- - ***setLanguage(string):*** Changes language of user object.
+- - ***setWatching(bool):*** Changes watching status of user object.
+- - ***setPermissions(int):*** Changes permissions of user object.
+- - ***setSettings(object):*** Changes settings of user object.
+- **class Group(GroupData):**
+- - ***id:*** WhatsApp ID of group
+- - ***name:*** WhatsApp display name of group
+- - ***language:*** Group-specific language (en)
+- - ***safe:*** Trusted status of group (false)
+- - ***safe_users:*** Trusted users in this group ([])
+- - ***settings:*** reserved for future ({})
+- - ***json:*** Returns `groups.json`
+- - ***setName(string):*** Changes name of group object.
+- - ***setLanguage(string):*** Changes language of group object.
+- - ***setSafe(bool):*** Changes safe status of group object.
+- - ***setSafeUser(string userId, bool status):*** Changes permissions of group object.
+- - ***setSettings(object):*** Changes settings of group object.
+- **class Client(ClientData):**
+- - ***id:*** WhatsApp ID of host account
+- - ***prefix:*** WhatsApp display name of user (/,!)
+- - ***language:*** User-specific language (en)
+- - ***cooldown:*** Cooldown between commands. (5)
+- - ***settings:*** reserved for future ({})
+- - ***json:*** Returns `client.json`
+- - ***setId(string):*** Changes id of client object.
+- - ***setLanguage(string):*** Changes language of client object.
+- - ***setPrefix(bool):*** Changes prefixes of client object.
+- - ***setCooldown(int):*** Changes cooldown time of client object.
+- - ***setSettings(object):*** Changes settings of client object.
 ---
 ### Command List
 - `N` means, permission required to execute command in groups and private chats.  `T` means, group must be in trusted list.
