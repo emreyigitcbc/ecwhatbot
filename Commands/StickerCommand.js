@@ -65,7 +65,7 @@ module.exports = {
 
 	async sendSticker(client, message, sender, stickerMetadata, videoSettings, lang) {
 		var now = Date.now();
-		if (message.isMedia && message.type === "image") {
+		if (message.type == "image") {
 			console.log(lang.sticker_log_request, sender, "IMAGE1")
 			var media = await decryptMedia(message, client.userAgent);
 			/*if (stickerMetadata.removeBackgroundEC) {
@@ -76,9 +76,10 @@ module.exports = {
 				await client.sendImageAsSticker(message.from, media, stickerMetadata);
 				return console.log(lang.sticker_log_sent, sender, "IMAGE1", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, sender, "IMAGE1", error.red)
+				client.react(message.id, "❌")
+				return console.log(lang.sticker_log_error.red, sender, "IMAGE1", error)
 			}
-		} else if (message.quotedMsgObj && message.quotedMsgObj.type === "image") {
+		} else if (message?.quotedMsgObj?.type == "image") {
 			console.log(lang.sticker_log_request, sender, "IMAGE2")
 			var media = await decryptMedia(message.quotedMsgObj, client.userAgent);
 			/*if (stickerMetadata.removeBackgroundEC) {
@@ -89,19 +90,21 @@ module.exports = {
 				await client.sendImageAsSticker(message.from, media, stickerMetadata);
 				return console.log(lang.sticker_log_sent, sender, "IMAGE2", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, sender, "IMAGE2", error.red)
+				client.react(message.id, "❌")
+				return console.log(lang.sticker_log_error.red, sender, "IMAGE2", error)
 			}
-		} else if ((message.isMedia || message.isGif) || (message.mimetype === "video/mp4" || message.mimetype === "image/gif") || message.type === "video") {
+		} else if (message.type == "video") {
 			console.log(lang.sticker_log_request, sender, "VIDEO1")
 			const mediaData = await decryptMedia(message, client.userAgent);
-			if (message.duration > 10) client.reply(sender, lang.sticker_duration, message.id);
+			if (message.duration > 10) client.reply(message.from, lang.sticker_duration, message.id);
 			try {
 				await client.sendMp4AsSticker(message.from, mediaData, videoSettings, stickerMetadata);
 				return console.log(lang.sticker_log_sent, sender, "VIDEO1", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, sender, "VIDEO1", error.red)
+				client.react(message.id, "❌")
+				return console.log(lang.sticker_log_error.red, sender, "VIDEO1", error)
 			}
-		} else if ((message.quotedMsgObj) && (message.quotedMsgObj.isMedia || message.quotedMsgObj.isGif || message.quotedMsgObj.mimetype === "video/mp4" || message.quotedMsgObj.mimetype === "image/gif" || message.quotedMsgObj.type === "video")) {
+		} else if (message?.quotedMsgObj?.type == "video") {
 			console.log(lang.sticker_log_request, sender, "VIDEO2")
 			const mediaData = await decryptMedia(message.quotedMsgObj, client.userAgent);
 			if (message.quotedMsgObj.duration > 10) client.reply(sender, lang.sticker_duration, message.id);
@@ -109,10 +112,11 @@ module.exports = {
 				await client.sendMp4AsSticker(message.from, mediaData, videoSettings, stickerMetadata);
 				return console.log(lang.sticker_log_sent, sender, "VIDEO2", Date.now() - now)
 			} catch (error) {
-				return console.log(lang.sticker_log_error.red, sender, "VIDEO2", error.red)
+				client.react(message.id, "❌")
+				return console.log(lang.sticker_log_error.red, sender, "VIDEO2", error)
 			}
 		} else {
-			return client.reply(sender, lang.sticker_no_quote, message.id);
+			return client.reply(message.from, lang.sticker_no_quote, message.id);
 		}
 	}
 }

@@ -15,26 +15,35 @@ module.exports = {
     categories: {
         "fun": "Eğlence",
         "general": "Genel",
-        "moderation": "Moderasyon"
+        "moderation": "Moderasyon",
+        "owner": "Sahip"
     },
 
     help: "```CebeciBot```\n*Yardım Sayfası*\n%s\nKomutlar hakkında detaylı bilgi için: %syardım <komut>",
     help_usage: ":D?",
 
+    stop_usage: "",
+
+    restart_usage: "",
+    restart_requested: "[!] Bot modülleri restart istendi!",
+    restart_starting: "[!] Bot modülleri yeniden başlatılıyor!",
+
+    chatinfo_usage: "",
+    chatinfo_info: "ID: %s\nBAŞLIK: %s\nMETADATA: %s\nTÜR: %s\nPP: %s",
+
     anime_usage: `Anime fotosu atar %sanime <sağlayıcı/kategori> <sağlayıcı girildiyse: kategori> (sfw/nsfw olarak belirtmenize gerek yok)\nSağlayıcılar ve listeleri:\n%s`,
+    waifu_usage: `Waifu fotosu atar %swaifu <(nsfw/sfw)/kategori> <nsfw/sfw girildiyse: kategori> (sfw/nsfw olarak belirtmenize gerek yok)\nKategoriler:\n%s`,
 
-    weather_usage: "hava <şehir>",
-    weather_error: "Bir hata meydana geldi, lütfen daha sonra tekrar deneyiniz.",
-    weather_text: `*%s için hava tahmini*\n*Sıcaklık:* %s°C\n*Hissedilen:* %s°C\n*Rüzgar:* %s\n*Nem:* %%s`,
-
-    send_usage: "mesajat <kişi adı veya numara/şifre/mesaj>",
-    send_wrong_password: "Yanlış şifre knk",
-    send_ok: "Gönderdim knk",
-    send_not_found: "Böle birini bulamadım knk ?",
-    send_verify_arg: "onayla",
-    send_delete_arg: "sil",
-    send_deleted: "tm yollamicam",
-    send_verify_pending: "Tamam isteğin alındı, onaylaman gerekiyor tek.\n*Mesajın gideceği kişi:* %s (%s)\n*Mesaj:* %s",
+    nudify_usage: "Atılan fotoğrafın DeepFake fotoğrafını oluşturur. (DreamPower aracılığıyla https://github.com/opendreamnet/dreampower) Bir fotoğrafın altında veya fotoğrafı alıntılayarak kullanın.",
+    nudify_already_started: "(!) Zaten başlamış bir işleminiz bulunmakta.",
+    nudify_success: "Buyrun benim, bir şey mi dedin?",
+    nudify_error: "(!) Dostum, işlem sırasında bir hata oluştu, başka bir fotoğrafla denemek ister misin?",
+    nudify_started: `(!) İşlem başlıyor, sıran: %s, biraz uzun sürebilir. Keyfine bak!`,
+    nudify_log_started: "[!] DeepFake işlemi istendi (%s)",
+    nudify_log_file_saved: "[!] Dosya %s olarak kaydedildi.",
+    nudify_log_success_file: "[!] DeepFake dosyası %s olarak kaydedildi.",
+    nudify_log_success: "[!] DeepFake işlemi başarıyla bitti. (%s) (%s saniye)",
+    nudify_log_error: "[!] DeepFake işlemi hatalı bitti! (%s) (%s saniye)",
 
     sticker_usage: `*Bir resmi/videoyu/gifi alıntılayarak veya göndermeden önce altına yazarak kullanılır.*\n*Alabileceği argümanlar:*\n*-koru*: Medyanın biçimini korur. (Sadece HAREKETSİZ ÇIKARTMALARDA kullanılır)\n*-dairesel*: (Medyayı dairesel bir şekilde biçimlendirir.)\n*-biçim*: Medyanın ne tarafını işlemesi gerektiğini belirtir. (_Alabileceği değerler:_\n"yukarı" | "sağyukarı" | "sağ" | "sağaşağı" | "aşağı" | "solaşağı" | "sol" | "solyukarı" | "kuzey" | "kuzeydoğu" | "doğu" | "güneydoğu" | "güney" | "güneybatı" | "batı" | "kuzeybatı" | "merkez" | "ortala" | "entropi" | "dikkat")\n*-fps <sayı>*: GIF veya videonun saniyedeki kare hızını belirler.\n*-başlangıç <dd:ss>*: Videonun başlangıç zamanını belirlemek için kullanılır.\n*-bitiş <dd:ss>*: Videonun bitiş zamanını belirlemek için kullanılır.\n*-kırpma*: Videonun ortalanıp kırpılmasını deaktif eder.\n*-boyut <sayı>*: Videonun bir kenarının pixel sayısını belirtir. (Video kare şeklinde çıkar)\n\n*Örnek kullanım:*\n%ssticker -koru -dairesel\n%ssticker -koru -biçim yukarı\n%ssticker -fps 20 -kırpma -boyut 256`,
     sticker_args: ["-dairesel", "-koru", "-temizle", "-biçim", "-başlangıç", "-bitiş", "-boyut", "-fps", "-kırpma"],
@@ -95,29 +104,13 @@ module.exports = {
     permissions_failed: "Ayarlamak istediğiniz yetki (%s), sizin yetkinizden (%s) daha küçük olmalı!",
     permissions_user: "Kullanıcının yetkisi: %s",
 
-    watchgroup_usage: "Bir grupta olan olayları izlemeyi aktifleştirir.",
-    watchgroup_successful: "Bu grup artık izlenecek...",
-    unwatchgroup_usage: "Bir grupta olan olayları izlemeyi kapatır.",
-    unwatchgroup_successful: "Bu grup artık izlenmeyecek...",
-
-    module_usage: "<|>",
-
-    watchuser_usage: "Kullanıcının gruptalardaki silinen mesajlarını takip etmeyi etkinleştirir.",
-    watchuser_group_successful:  "Bu kullanıcı artık gruplarda izlenecek...",
-    watchuser_priv_successful:  "Bu kullanıcı artık özel sohbetlerde izlenecek...",
-    unwatchuser_usage: "Kullanıcının gruptalardaki silinen mesajlarını takip etmeyi kapatır.",
-    unwatchuser_group_successful: "Bu kullanıcı artık gruplarda izlenmeyecek...",
-    unwatchuser_priv_successful: "Bu kullanıcı artık özel sohbetlerde izlenmeyecek...",
-
     wiki_usage: "Wikipediadan arama yapar.",
     wiki_not_found: "Böyle bir wikipedia sayfası bulunamadı!",
-
-    module_usage: "Bot modüllerini yönetir.",
-
-    message_deleted: "*Mesaj Silindi!*\n*Silen:* %s\n*Silinme Tarihi:* %s\n*Mesaj:* %s",
 
     ytmp3_usage: "YouTube videosunu ses olarak gönderir. Bazı durumlarda çalışmayabilir, yapabileceğimiz bir şey yok. Kullanımı çok basit, 'link <yt adresi>'",
     ytmp3_too_long: "Lütfen 10 dakikadan kısa bir video belirt :(",
     ytmp3_log_request: "[YTMP3] - Videodan sese çevirme isteği geldi. (%s)",
-    ytmp3_log_sent: "[YTMP3] - Videodan sese çevirme isteği tamamlandı. (%s) (%s ms)"
+    ytmp3_log_sent: "[YTMP3] - Videodan sese çevirme isteği tamamlandı. (%s) (%s ms)",
+
+    message_deleted: "*Mesaj Silindi*\nSilen/Silinen: %s\nMesaj Tarihi: %s\nSilinme Tarihi: %s\nMesaj Tipi: %s\nİçerik:\n%s"
 }

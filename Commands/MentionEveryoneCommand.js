@@ -14,6 +14,8 @@ module.exports = {
             }
             real_message = real_message +"\n\n" + "@" + members.join(" @")
             client.sendTextWithMentions(message.from, real_message)
+        } else {
+            client.react(message.id, "❌")
         }
     }
 }

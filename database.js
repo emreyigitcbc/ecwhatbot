@@ -1,5 +1,6 @@
 const fs = require("fs");
 const { purify } = require("./functions");
+
 // Check files exists
 try {
     if (!fs.existsSync("users.json")) {
@@ -18,13 +19,13 @@ databaseUpdate = (database, data) => {
     fs.writeFileSync(database + '.json', JSON.stringify(data, null, 4), { flag: 'w' });
     return true;
 }
-
 class User {
     constructor(data) {
         this.id = data.id
         this.name = data.name
         this.language = data.language
         this.watching = data.watching
+        this.watchlog = data.watchlog;
         this.permissions = data.permissions
         this.settings = data.settings
         this.json = {}
@@ -57,6 +58,12 @@ class User {
         this.watching = value;
         return databaseUpdate("users", this.json)
     }
+    setWatchLog(value) {
+        this.updateJSON()
+        this.json[this.id].watchlog = value;
+        this.watchlog = value;
+        return databaseUpdate("users", this.json)
+    }
     setPermissions(value) {
         this.updateJSON()
         this.json[this.id].permissions = value;
@@ -70,12 +77,17 @@ class User {
         return databaseUpdate("users", this.json)
     }
 }
-
+/**
+ * @param {Group}
+ */
 class Group {
     constructor(data) {
         this.id = data.id
         this.name = data.name
         this.language = data.language
+        this.watching = data.watching
+        this.watching_users = data.watching_users
+        this.watchlog = data.watchlog
         this.safe = data.safe
         this.safe_users = data.safe_users
         this.settings = data.settings
@@ -90,6 +102,32 @@ class Group {
     updateJSON(){
         let rawdata = fs.readFileSync('groups.json');
         this.json = JSON.parse(rawdata);
+    }
+    setWatching(value) {
+        this.updateJSON()
+        this.json[this.id].watching = value;
+        this.watching = value;
+        return databaseUpdate("groups", this.json)
+    }
+    setWatchLog(value) {
+        this.updateJSON()
+        this.json[this.id].watchlog = value;
+        this.watchlog = value;
+        return databaseUpdate("groups", this.json)
+    }
+    setWatchingUser(user, status) {
+        this.updateJSON()
+        if(status && !this.watching_users.includes(user)) {
+            this.json[this.id].watching_users.push(user);
+            this.watching_users.push(user);
+        } else if(!status && this.watching_users.includes(user)) {
+            const index = this.watching_users.indexOf(user);
+            if (index > -1) { 
+                this.watching_users.splice(index, 1);
+                this.json[this.id].watching_users.splice(index, 1)
+            }
+        }
+        return databaseUpdate("groups", this.json)
     }
     setSafe(value) {
         this.updateJSON()
@@ -211,6 +249,7 @@ const db = {
                 permissions: 0,
                 language: "en",
                 watching: false,
+                watchlog: "",
                 settings: {}
             }
             return new User(usr);
@@ -237,6 +276,9 @@ const db = {
                 id: purify(id),
                 name: "",
                 language: "en",
+                watching: false,
+                watching_users: [],
+                watchlog: "",
                 safe: false,
                 safe_users: [],
                 settings: {}

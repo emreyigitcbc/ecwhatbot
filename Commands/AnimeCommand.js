@@ -31,9 +31,9 @@ module.exports = {
                     path = hmfull[params[0]][params[1]]
                     try {
                         const anime = await path[args[0]]()
-                        await client.sendImage(message.from, anime.url, 'file.jpg');
+                        await client.sendImage(message.from, anime.url, 'file.jpg', anime.url);
                         return;
-                    } catch { }
+                    } catch { client.react(message.id, "❌")}
                 }
             })
             paths.forEach(async elem => {
@@ -43,16 +43,16 @@ module.exports = {
                         found = true
                         try {
                             const anime = await path.sfw[args[1].toLowerCase()]()
-                            await client.sendImage(message.from, anime.url, 'file.jpg');
+                            await client.sendImage(message.from, anime.url, 'file.jpg', anime.url);
                             return;
-                        } catch { }
+                        } catch { client.react(message.id, "❌")}
                     } else if (path.nsfw.hasOwnProperty(args[1].toLowerCase())) {
                         found = true
                         try {
                             const anime = await path.nsfw[args[1].toLowerCase()]()
-                            await client.sendImage(message.from, anime.url, 'file.jpg');
+                            await client.sendImage(message.from, anime.url, 'file.jpg', anime.url);
                             return;
-                        } catch { }
+                        } catch {client.react(message.id, "❌") }
                     }
                 }
             })
@@ -63,8 +63,8 @@ module.exports = {
                 selectedCategory = availablePaths[Math.floor(Math.random() * availablePaths.length)]
                 realPath = hmfull.HMtai.sfw[selectedCategory]
                 const anime = await realPath();
-                return await client.sendImage(message.from, anime.url, 'file.jpg')
-            } catch { }
+                return await client.sendImage(message.from, anime.url, 'file.jpg', anime.url)
+            } catch { client.react(message.id, "❌")}
         }
     }
 }
