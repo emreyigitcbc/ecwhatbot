@@ -11,7 +11,13 @@ module.exports = {
                 global.db.users.create(message.mentionedJidList[0]);
                 global.db.users.get(client.purify(message.mentionedJidList[0])).setPermissions(0)
                 return client.reply(message.from, lang.adminunban_successful, message.id);
-            } catch { }
+            } catch {client.react(message.id, "❌") }
+        } else if(!message.isGroupMsg){
+            try {
+                global.db.users.create(message.to);
+                global.db.users.get(client.purify(message.to)).setPermissions(0)
+                return client.reply(message.from, lang.adminunban_successful, message.id);
+            } catch {client.react(message.id, "❌") }
         } else {
             return client.reply(message.from, lang.adminunban_usage, message.id);
         }

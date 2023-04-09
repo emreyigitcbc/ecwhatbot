@@ -13,7 +13,7 @@ module.exports = {
             }
             return client.reply(message.from, lang.untrust_user_untrusted, message.id);
         } else {
-            // IF group, trust!
+            // IF group, untrust!
             if(message.isGroupMsg) {
                 global.db.groups.get(message.chatId).setSafe(false);
                 return client.reply(message.from, lang.untrust_group_untrusted, message.id);

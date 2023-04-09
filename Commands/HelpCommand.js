@@ -19,7 +19,7 @@ module.exports = {
 		} else {
 			a = ""
 			Object.keys(client.commands_list).forEach((key, index) => {
-				if(key == "dontshow") return;
+				if(key == "owner" && perms != 11) return;
 				a = a + "*" + lang.categories[key] + "*\n"
 				a = a + client.commands_list[key].join(", ") + "\n"
 			})

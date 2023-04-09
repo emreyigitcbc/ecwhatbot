@@ -10,31 +10,40 @@ module.exports = {
     langs_found: "%s dil dosyası bulundu. (%s)",
     no_event: "NO EVENT FOUND!",
     no_command: "NO COMMAND FOUND!",
-    no_langs: "HİÇ DİL DOSYASI BULUNAMADI!",
+    no_langs: "NO LANG FILE FOUND",
 
     categories: {
         "fun": "Fun",
         "general": "General",
-        "moderation": "Moderation"
+        "moderation": "Moderation",
+        "owner": "Owner"
     },
     
     help: "```CebeciBot```\n*Help Page*\n%s\nFor detailed information about commands: %shelp <command>",
     help_usage: ":D?",
 
+    stop_usage: "",
+
+    restart_requested: "[!] Bot modules restart requested!",
+    restart_starting: "[!] Bot modules restarting!",
+    restart_usage: "",
+
+    chatinfo_usage: "",
+    chatinfo_info: "ID: %s\nTITLE: %s\nMETADATA: %s\nKIND: %s\nPP: %s",
+
     anime_usage: `Sends anime pic %sanime <provider/category> <if provider provided: category> (Don't need to specify nsfw/sfw)\nProviders and lists:\n%s`,
+    waifu_usage: `Sends waifu pic %swaifu <(nsfw/sfw)/category> <if nsfw/sfw provided: category> (Don't need to specify nsfw/sfw)\nCategories:\n%s`,
 
-    weather_usage: "weather <city>",
-    weather_error: "An error occured, please try again later.",
-    weather_text: `*Weather report for %s*\n*Temperature:* %s°C\n*Feels:* %s°C\n*Wind:* %s\n*Humidity:* %%s`,
-
-    send_usage: "sendmessage <number or contact name/password/message>",
-    send_wrong_password: "Wrong password bro",
-    send_ok: "I sent it bro",
-    send_not_found: "I couldnt find someone bro?",
-    send_verify_arg: "verify",
-    send_delete_arg: "delete",
-    send_deleted: "Ok i wont send it",
-    send_verify_pending: "Oke got your request, you need to verify.\n*Receiver:* %s (%s)\n*Message:* %s",
+    nudify_usage: "Creates DeepFake image of sent photo. (w/DreamPower https://github.com/opendreamnet/dreampower) Use it below a photo or quote.",
+    nudify_already_started: "(!) You already have a started process.",
+    nudify_success: "Here you gooo!",
+    nudify_error: "(!) Dude, an error accured. would you like to try another photo?",
+    nudify_started: `(!) Process is starting, your place in queue is: %s, have fun!`,
+    nudify_log_started: "[!] DeepFake process requested (%s)",
+    nudify_log_file_saved: "[!] Raw file saved as %s",
+    nudify_log_success_file: "[!] DeepFake file saved as %s",
+    nudify_log_success: "[!] DeepFake process ended successfully (%s) (%s secs)",
+    nudify_log_error: "[!] DeepFake process ended with errors (%s) (%s secs)",
 
     sticker_usage: `*Using by quoting a media or captioning a media.*\n*Available Arguments That It Can Take:*\n*-protect*: It protects the media's shape (Only for non-animated)\n*-round*: Formats media as round\n*-format*: Specifies where to process of a media. (_Available Args:_\n"up" | "rightup" | "right" | "rightbottom" | "bottom" | "leftbottom" | "left" | "leftup" | "north" | "northeast" | "east" | "southeast" | "south" | "southwest" | "west" | "northwest" | "center" | "centre" | "entropy" | "attention")\n*-fps <number>*: Specifies max frame rate (only for aniamted)\n*-start <mm:ss>*: Specifies video's start time.\n*-end <mm:ss>*: Specifies video's end time.\n*-dontcrop*: Doesn't crops media into a square.\n*-size <number>*: Specifies one edge of video (Video shape is square)\n\n*Examples:*\n%ssticker -protect -round\n%ssticker -protect -format up\n%ssticker -fps 20 -dontcrop -size 256`,
     sticker_args: ["-round", "-protect", "-clean", "-format", "-start", "-end", "-size", "-fps", "-dontcrop"],
@@ -95,29 +104,14 @@ module.exports = {
     permissions_failed: "The permission that you want to set (%s) must be lower than yours! (%s)",
     permissions_user: "User's permissions: %s",
 
-    watchgroup_usage: "Enables listening for deleted messages in a group.",
-    watchgroup_successful: "This group will be watched...",
-    unwatchgroup_usage: "Disables listening for deleted messages in a group.",
-    unwatchgroup_successful: "This group will no longer watched...",
-
-    module_usage: "<|>",
-
-    watchuser_usage: "Enables listening for deleted messages for a user.",
-    watchuser_group_successful: "This user will be watched in groups...",
-    watchuser_priv_successful: "This user will be watched in private chats...",
-    unwatchuser_usage: "Disables listening for deleted messages for a user.",
-    unwatchuser_successful: "This user will no longer watched in groups...",
-    unwatchuser_priv_successful: "This user will be watched in groups...",
-
     wiki_usage: "It search in wikipedia!",
     wiki_not_found: "I couldnt find any article about this!",
-
-    module_usage: "Manages bot modules.",
-
-    message_deleted: "*Message Deleted!*\n*By:* %s\n*Date:* %s\n*Message:* %s",
 
     ytmp3_usage: "Sends youtube vid as audio. May not work sometimes, can't do anything. Easy to use, 'link <yt adress>'",
     ytmp3_too_long: "Please specify a video less than 10 mins:(",
     ytmp3_log_request: "[YTMP3] - Video to audio conversion requested by %s",
-    ytmp3_log_sent: "[YTMP3] - Video to audio conversion request by %s sent successfuly. (%s ms)"
+    ytmp3_log_sent: "[YTMP3] - Video to audio conversion request by %s sent successfuly. (%s ms)",
+
+    message_deleted: "*Message Deleted*\nBy/Whose: %s\nMessage Date: %s\nDelete Date: %s\nType: %s\nContent:\n%s"
+
 }

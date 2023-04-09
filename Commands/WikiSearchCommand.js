@@ -17,6 +17,7 @@ module.exports = {
                     return client.reply(message.from, lang.wiki_not_found, message.id)
                 })
             } catch {
+                client.react(message.id, "❌");
                 return client.reply(message.from, lang.wiki_not_found, message.id)
             }
         }
