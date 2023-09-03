@@ -1,10 +1,10 @@
 module.exports = {
     name: "ban",
-    aliases: ["kick"],
-    category: "moderation",
+    aliases: [],
     usage: "ban_usage",
+    category: "moderation",
     permissions: 1,
-    
+
     async run(client, message, sender, perms, prefix, args, content, lang) {
         {
             if (message.isGroupMsg) {
