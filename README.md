@@ -15,7 +15,6 @@ Simple and customizable WhatsApp bot with `20` commands!
 - Botban command, bans user from using the bot. To pardon user, use botunban command.
 - It has user-specified multi-language system! Every user can change own bot language. By using "setlang" command. Also, you can translate it in your language! Copy one of the language files and rename it to `language.LANG_CODE.js` and change language option in config to LANG_CODE.
 - The language option in database is just for console language.
-- It can nudify photos! (DreamPower should be installed and configured in `Commands/Nudify.js`)
 - Restart & stop commands!
 - Listens for deleted messages and it can log them specific channels (including video & images).
 - **It has "Trusted groups system", so if you add a group to trusted groups, everyone in that group can use some sensitive commands. Otherwise they can't use it. (Sensitive commands are: anime, everyone etc.)**
@@ -103,7 +102,7 @@ I switched to JSON from firebase, because I got feedbacks about it is hard to se
 | sticker | Explained below. | Converts images/gifs/videos to sticker. | 0 | private, group |
 | trust | empty or @mentions | Adds group or users to trusted list. | 10 | group |
 | untrust | empty or @mentions | Removes group or users from trusted list. | 10 | group |
-| nudify | empty | Creates DeepFake photo of quoted/captioned image. | 1 | private, group |
+| otd | empty | Gets what happened OTD. | 0 | private, group |
 | wiki | topic | Gets article from wikipedia. | 0 | private, group |
 | youtube | url | Converts youtube video to sound. | 0 | private, group |
 | stop | empty | Stops bot. | 11 | private, group |
@@ -129,7 +128,7 @@ I switched to JSON from firebase, because I got feedbacks about it is hard to se
 4. `/watch SomePhoneNumber` : Only watches deleted messages for `SomePhoneNumber`'s private chat messages and logs the messages in current private chat.
 
 
-- You can get chat ID's by using `/chatinfo` command. (For group chats)
+- You can get chat ID's by using `/getchatinfo` command. (For group chats)
 - Private chats are normally formatted like this: `COUNTRYCODENUMBER@c.us` (ex: 905400000000@c.us, 90 is country code)
 
 ##### Sticker Options:
