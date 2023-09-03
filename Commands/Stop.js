@@ -7,7 +7,7 @@ module.exports = {
 
     async run(client, message, sender, perms, prefix, args, content, lang) {
         {
-            client.react(message.id, "❌")
+            client.react(message.id, "🫡")
             process.exit()
         }
     }
