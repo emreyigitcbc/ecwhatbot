@@ -34,17 +34,6 @@ module.exports = {
     anime_usage: `Sends anime pic %sanime <provider/category> <if provider provided: category> (Don't need to specify nsfw/sfw)\nProviders and lists:\n%s`,
     waifu_usage: `Sends waifu pic %swaifu <(nsfw/sfw)/category> <if nsfw/sfw provided: category> (Don't need to specify nsfw/sfw)\nCategories:\n%s`,
 
-    nudify_usage: "Creates DeepFake image of sent photo. (w/DreamPower https://github.com/opendreamnet/dreampower) Use it below a photo or quote.",
-    nudify_already_started: "(!) You already have a started process.",
-    nudify_success: "Here you gooo!",
-    nudify_error: "(!) Dude, an error accured. would you like to try another photo?",
-    nudify_started: `(!) Process is starting, your place in queue is: %s, have fun!`,
-    nudify_log_started: "[!] DeepFake process requested (%s)",
-    nudify_log_file_saved: "[!] Raw file saved as %s",
-    nudify_log_success_file: "[!] DeepFake file saved as %s",
-    nudify_log_success: "[!] DeepFake process ended successfully (%s) (%s secs)",
-    nudify_log_error: "[!] DeepFake process ended with errors (%s) (%s secs)",
-
     sticker_usage: `*Using by quoting a media or captioning a media.*\n*Available Arguments That It Can Take:*\n*-protect*: It protects the media's shape (Only for non-animated)\n*-round*: Formats media as round\n*-format*: Specifies where to process of a media. (_Available Args:_\n"up" | "rightup" | "right" | "rightbottom" | "bottom" | "leftbottom" | "left" | "leftup" | "north" | "northeast" | "east" | "southeast" | "south" | "southwest" | "west" | "northwest" | "center" | "centre" | "entropy" | "attention")\n*-fps <number>*: Specifies max frame rate (only for aniamted)\n*-start <mm:ss>*: Specifies video's start time.\n*-end <mm:ss>*: Specifies video's end time.\n*-dontcrop*: Doesn't crops media into a square.\n*-size <number>*: Specifies one edge of video (Video shape is square)\n\n*Examples:*\n%ssticker -protect -round\n%ssticker -protect -format up\n%ssticker -fps 20 -dontcrop -size 256`,
     sticker_args: ["-round", "-protect", "-clean", "-format", "-start", "-end", "-size", "-fps", "-dontcrop"],
     sticker_log_request: `[Sticker] - Sticker requested by %s (%s)`,
@@ -104,14 +93,33 @@ module.exports = {
     permissions_failed: "The permission that you want to set (%s) must be lower than yours! (%s)",
     permissions_user: "User's permissions: %s",
 
-    wiki_usage: "It search in wikipedia!",
+	on_this_day: "On This Day",
+	month1: "January",
+	month2: "Fabruary",
+	month3: "March",
+	month4: "April",
+	month5: "May",
+	month6: "June",
+	month7: "July",
+	month8: "August",
+	month9: "September",
+	month10: "October",
+	month11: "November",
+	month12: "December",
+
+    otd_usage: "%otd - Fetches what happened on this day from wikipedia. Takes no arguments.",
+
+    wiki_usage: "%swiki - It search in wikipedia!",
     wiki_not_found: "I couldnt find any article about this!",
+
+    watch_usage: "You have to use this on a group. Usage: %swatch <logChatId> [<@mentions>] | Enables deleted message logging for @mentions in executed group and logs to logChatId chat. (You can get chat IDs by /getchatinfo)",
+    unwatch_usage: "You have to use this on a group. Usage: %sunwatch [<@mentions>] | Disables deleted message logging for @mentions in executed group.",
 
     ytmp3_usage: "Sends youtube vid as audio. May not work sometimes, can't do anything. Easy to use, 'link <yt adress>'",
     ytmp3_too_long: "Please specify a video less than 10 mins:(",
     ytmp3_log_request: "[YTMP3] - Video to audio conversion requested by %s",
     ytmp3_log_sent: "[YTMP3] - Video to audio conversion request by %s sent successfuly. (%s ms)",
 
-    message_deleted: "*Message Deleted*\nBy/Whose: %s\nMessage Date: %s\nDelete Date: %s\nType: %s\nContent:\n%s"
+    message_deleted: "*Message Deleted*\n*Whose:* ```%s```\n*Message Date:* ```%s```\n*Delete Date:* ```%s```\n*Type:* ```%s```\n*Content:*\n%s"
 
 }

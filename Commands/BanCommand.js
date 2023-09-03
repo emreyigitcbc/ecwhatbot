@@ -1,10 +1,12 @@
+const wiki = require('wikijs').default;
+
 module.exports = {
-    name: "ban",
-    aliases: ["kick"],
-    category: "moderation",
-    usage: "ban_usage",
-    permissions: 1,
-    
+    name: "wiki",
+    aliases: [],
+    usage: "wiki_usage",
+    category: "general",
+    permissions: 0,
+
     async run(client, message, sender, perms, prefix, args, content, lang) {
         {
             if (message.isGroupMsg) {

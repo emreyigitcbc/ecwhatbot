@@ -34,17 +34,6 @@ module.exports = {
     anime_usage: `Anime fotosu atar %sanime <sağlayıcı/kategori> <sağlayıcı girildiyse: kategori> (sfw/nsfw olarak belirtmenize gerek yok)\nSağlayıcılar ve listeleri:\n%s`,
     waifu_usage: `Waifu fotosu atar %swaifu <(nsfw/sfw)/kategori> <nsfw/sfw girildiyse: kategori> (sfw/nsfw olarak belirtmenize gerek yok)\nKategoriler:\n%s`,
 
-    nudify_usage: "Atılan fotoğrafın DeepFake fotoğrafını oluşturur. (DreamPower aracılığıyla https://github.com/opendreamnet/dreampower) Bir fotoğrafın altında veya fotoğrafı alıntılayarak kullanın.",
-    nudify_already_started: "(!) Zaten başlamış bir işleminiz bulunmakta.",
-    nudify_success: "Buyrun benim, bir şey mi dedin?",
-    nudify_error: "(!) Dostum, işlem sırasında bir hata oluştu, başka bir fotoğrafla denemek ister misin?",
-    nudify_started: `(!) İşlem başlıyor, sıran: %s, biraz uzun sürebilir. Keyfine bak!`,
-    nudify_log_started: "[!] DeepFake işlemi istendi (%s)",
-    nudify_log_file_saved: "[!] Dosya %s olarak kaydedildi.",
-    nudify_log_success_file: "[!] DeepFake dosyası %s olarak kaydedildi.",
-    nudify_log_success: "[!] DeepFake işlemi başarıyla bitti. (%s) (%s saniye)",
-    nudify_log_error: "[!] DeepFake işlemi hatalı bitti! (%s) (%s saniye)",
-
     sticker_usage: `*Bir resmi/videoyu/gifi alıntılayarak veya göndermeden önce altına yazarak kullanılır.*\n*Alabileceği argümanlar:*\n*-koru*: Medyanın biçimini korur. (Sadece HAREKETSİZ ÇIKARTMALARDA kullanılır)\n*-dairesel*: (Medyayı dairesel bir şekilde biçimlendirir.)\n*-biçim*: Medyanın ne tarafını işlemesi gerektiğini belirtir. (_Alabileceği değerler:_\n"yukarı" | "sağyukarı" | "sağ" | "sağaşağı" | "aşağı" | "solaşağı" | "sol" | "solyukarı" | "kuzey" | "kuzeydoğu" | "doğu" | "güneydoğu" | "güney" | "güneybatı" | "batı" | "kuzeybatı" | "merkez" | "ortala" | "entropi" | "dikkat")\n*-fps <sayı>*: GIF veya videonun saniyedeki kare hızını belirler.\n*-başlangıç <dd:ss>*: Videonun başlangıç zamanını belirlemek için kullanılır.\n*-bitiş <dd:ss>*: Videonun bitiş zamanını belirlemek için kullanılır.\n*-kırpma*: Videonun ortalanıp kırpılmasını deaktif eder.\n*-boyut <sayı>*: Videonun bir kenarının pixel sayısını belirtir. (Video kare şeklinde çıkar)\n\n*Örnek kullanım:*\n%ssticker -koru -dairesel\n%ssticker -koru -biçim yukarı\n%ssticker -fps 20 -kırpma -boyut 256`,
     sticker_args: ["-dairesel", "-koru", "-temizle", "-biçim", "-başlangıç", "-bitiş", "-boyut", "-fps", "-kırpma"],
     sticker_log_request: `[Sticker] - %s Tarafından sticker isteği geldi. (%s)`,
@@ -104,13 +93,33 @@ module.exports = {
     permissions_failed: "Ayarlamak istediğiniz yetki (%s), sizin yetkinizden (%s) daha küçük olmalı!",
     permissions_user: "Kullanıcının yetkisi: %s",
 
+	on_this_day: "Tarihte Bugün",
+
+	month1: "Ocak",
+	month2: "Şubat",
+	month3: "Mart",
+	month4: "Nisan",
+	month5: "Mayıs",
+	month6: "Haziran",
+	month7: "Temmuz",
+	month8: "Ağustos",
+	month9: "Eylül",
+	month10: "Ekim",
+	month11: "Kasım",
+	month12: "Aralık",
+
+    otd_usage: "%otd - herhangi bir argüman almadan, tarihte bugün yaşanan olayları wikipedia'dan çeker.",
+
     wiki_usage: "Wikipediadan arama yapar.",
     wiki_not_found: "Böyle bir wikipedia sayfası bulunamadı!",
+
+    watch_usage: "Bu komutu bir grupta kullanmanız gerekmekte. Kullanım: %sizle <kayıtKanalID> [<@etiketler>] | Çalıştırıldığı grupta silinen mesajlarını yakalamayı @etiketler için aktifleştirir ve kayıtKanalID kanalına loglar. (Kanal ID'lerini almak için /getchatinfo)",
+    unwatch_usage: "Bu komutu bir grupta kullanmanız gerekmekte. Kullanım: %sizleme [<@etiketler>] | Çalıştırıldığı grupta silinen mesajlarını yakalamayı @mentions için kapatır.",
 
     ytmp3_usage: "YouTube videosunu ses olarak gönderir. Bazı durumlarda çalışmayabilir, yapabileceğimiz bir şey yok. Kullanımı çok basit, 'link <yt adresi>'",
     ytmp3_too_long: "Lütfen 10 dakikadan kısa bir video belirt :(",
     ytmp3_log_request: "[YTMP3] - Videodan sese çevirme isteği geldi. (%s)",
     ytmp3_log_sent: "[YTMP3] - Videodan sese çevirme isteği tamamlandı. (%s) (%s ms)",
 
-    message_deleted: "*Mesaj Silindi*\nSilen/Silinen: %s\nMesaj Tarihi: %s\nSilinme Tarihi: %s\nMesaj Tipi: %s\nİçerik:\n%s"
+    message_deleted: "*Mesaj Silindi*\n*Yazar:* ```%s```\n*Mesaj Tarihi:* ```%s```\n*Silinme Tarihi:* ```%s```\n*Türü:* ```%s```\n*İçerik:*\n%s"
 }
