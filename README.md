@@ -1,4 +1,8 @@
 # ecwhatbot
+
+This project won't be continued, WhatsApp changed, everything changed... And I'm tired for bugfixing. I may create new project in the future.
+
+## Description
 Simple and customizable WhatsApp bot with `20` commands!
 
 ## Features
